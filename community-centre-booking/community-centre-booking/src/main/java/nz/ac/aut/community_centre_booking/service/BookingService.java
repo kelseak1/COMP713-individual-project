@@ -65,4 +65,13 @@ public class BookingService {
 
         return bookingRepository.save(booking);
     }
+
+    @Transactional
+    public void deleteBooking(Long id) {
+
+        Booking booking = bookingRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Booking not found."));
+
+        bookingRepository.delete(booking);
+    }
 }
