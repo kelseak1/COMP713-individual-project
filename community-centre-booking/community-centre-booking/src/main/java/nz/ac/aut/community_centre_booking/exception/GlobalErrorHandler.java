@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.NoSuchElementException;
 
+// converts app exceptions into consistent HTTP responses
 @RestControllerAdvice
 public class GlobalErrorHandler {
 
+    // returns the first validation error message for invalid requests
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleValidation(
             MethodArgumentNotValidException exception,
@@ -35,6 +37,7 @@ public class GlobalErrorHandler {
                 .body(error);
     }
 
+    // returns a 404 response for resources that cannot be found
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<ApiError> handleNotFound(
             NoSuchElementException exception,
@@ -50,6 +53,7 @@ public class GlobalErrorHandler {
                 .body(error);
     }
 
+    // returns a 400 response for invalid requests, such as invalid room IDs
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleInvalidRequest(
             IllegalArgumentException exception,
@@ -65,6 +69,7 @@ public class GlobalErrorHandler {
                 .body(error);
     }
 
+    // returns a 409 response for booking conflicts, such as overlapping bookings
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<ApiError> handleConflict(
             IllegalStateException exception,

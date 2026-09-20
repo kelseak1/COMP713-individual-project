@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.net.URI;
 import java.util.List;
 
+// controller for handling booking-related requests
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
@@ -27,11 +28,13 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
+    // returns all current bookings
     @GetMapping
     public List<Booking> getAllBookings() {
         return bookingService.getAllBookings();
     }
 
+    // creates a booking and returns its location with a 201 response
     @PostMapping
     public ResponseEntity<Booking> createBooking(
             @Valid @RequestBody BookingRequest request) {
@@ -49,6 +52,7 @@ public class BookingController {
                 .body(createdBooking);
     }
 
+    // deletes booking and returns a 204 response
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);

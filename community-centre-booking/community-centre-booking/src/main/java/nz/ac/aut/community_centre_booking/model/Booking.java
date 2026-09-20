@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+//represents a booking for a room in the community centre
 @Entity
 @Table(name = "bookings")
 public class Booking {
@@ -26,6 +27,7 @@ public class Booking {
     private LocalTime startTime;
     private LocalTime endTime;
 
+    // many to one relationship with room
     @ManyToOne(optional = false)
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;

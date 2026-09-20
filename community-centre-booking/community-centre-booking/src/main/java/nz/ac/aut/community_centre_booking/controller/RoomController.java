@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+// controller for handling room-related requests
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
@@ -18,6 +19,7 @@ public class RoomController {
         this.roomService = roomService;
     }
 
+    // retrieves all rooms and returns them as a list
     @GetMapping
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();

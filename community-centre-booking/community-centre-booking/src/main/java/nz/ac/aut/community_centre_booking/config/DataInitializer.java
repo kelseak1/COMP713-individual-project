@@ -5,6 +5,7 @@ import nz.ac.aut.community_centre_booking.repository.RoomRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+// adds initial room data to the database if no rooms exist
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -16,6 +17,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        // check if the room repository is empty and add initial rooms if so
         if (roomRepository.count() == 0) {
             roomRepository.save(
                     new Room(

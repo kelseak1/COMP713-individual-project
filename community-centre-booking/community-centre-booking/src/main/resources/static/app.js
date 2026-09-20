@@ -6,6 +6,7 @@ const refreshButton = document.getElementById("refresh-button");
 const dateInput = document.getElementById("booking-date");
 
 setMinimumDate();
+// loads rooms and bookings when the page is loaded
 loadRooms();
 loadBookings();
 
@@ -22,6 +23,7 @@ function setMinimumDate() {
     dateInput.min = `${year}-${month}-${day}`;
 }
 
+// loads rooms into the form
 async function loadRooms() {
     try {
         const response = await fetch("/api/rooms");
@@ -47,6 +49,7 @@ async function loadRooms() {
     }
 }
 
+// loads bookings into the page
 async function loadBookings() {
     bookingsList.textContent = "Loading bookings...";
 
@@ -113,6 +116,7 @@ async function loadBookings() {
     }
 }
 
+// creates a new booking
 async function createBooking(event) {
     event.preventDefault();
 
@@ -166,6 +170,7 @@ async function createBooking(event) {
     }
 }
 
+// cancels a booking
 async function cancelBooking(id) {
     const confirmed = window.confirm(
         "Are you sure you want to cancel this booking?"

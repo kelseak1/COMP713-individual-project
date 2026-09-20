@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// handles room logic between the controller and repository
 @Service
 public class RoomService {
 
@@ -15,6 +16,7 @@ public class RoomService {
         this.roomRepository = roomRepository;
     }
 
+    // retrieves all rooms from the repository
     public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
