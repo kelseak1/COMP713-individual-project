@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Community Centre Room Bookings</title>
+
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Community Centre Room Bookings</h1>
+        <p>View rooms and make a booking.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Create a booking</h2>
+
+            <form id="booking-form">
+                <label for="customer-name">Name</label>
+                <input id="customer-name" name="customerName" type="text" required>
+
+                <label for="customer-email">Email</label>
+                <input id="customer-email" name="customerEmail" type="email" required>
+
+                <label for="purpose">Booking purpose</label>
+                <input id="purpose" name="purpose" type="text" required>
+
+                <label for="room">Room</label>
+                <select id="room" name="roomId" required>
+                    <option value="">Select a room</option>
+                </select>
+
+                <label for="booking-date">Date</label>
+                <input id="booking-date" name="bookingDate" type="date" required>
+
+                <label for="start-time">Start time</label>
+                <input id="start-time" name="startTime" type="time" required>
+
+                <label for="end-time">End time</label>
+                <input id="end-time" name="endTime" type="time" required>
+
+                <button type="submit">Create booking</button>
+            </form>
+
+            <p id="form-message"></p>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Current bookings</h2>
+                <button id="refresh-button" type="button">
+                    Refresh
+                </button>
+            </div>
+
+            <div id="bookings-list">
+                <p>Loading bookings...</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
